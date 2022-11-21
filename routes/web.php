@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
+use App\Http\Controllers\PostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,17 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/posts', function () {
-    // $posts = Post::all(); // select * from posts;
+Route::get('/posts', [PostsController::class, 'index']);
 
-    // select * from posts where published = 1;
-    $posts = Post::published();
-
-    return view('posts', compact('posts'));
-});
-
-Route::get('/posts/{id}', function ($id) {
-    $post = Post::find($id);
-
-    return view('post', compact('post'));
-})->name('single-post');
+Route::get('/posts/{id}', [PostsController::class, 'show'])->name('single-post');
