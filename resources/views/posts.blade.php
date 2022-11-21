@@ -21,6 +21,14 @@
         </style>
     </head>
     <body class="antialiased">
-        <h1>Welcome to my blog 8)</h1>
+        <h1>All posts</h1>
+
+        <ul>
+            @foreach ($posts as $post)
+                <li>
+                    <a href="{{ route('single-post', ['id' => $post->id]) }}">{{ $post->title }}</a>       
+                </li>
+            @endforeach
+        </ul>
     </body>
 </html>
