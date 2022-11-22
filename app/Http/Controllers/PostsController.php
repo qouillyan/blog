@@ -22,7 +22,13 @@ class PostsController extends Controller
     }
 
     public function show($id) {
-        $post = Post::find($id);
+        // $post = Post::find($id);
+        // SELECT * FROM posts WHERE id = $id
+
+        $post = Post::with('comments')->find($id);
+        // SELECT * FROM posts 
+        // LEFT JOIN comments ON posts.id = comments.post_id where id = 1;
+
 
         return view('posts.show', compact('post'));
     }
