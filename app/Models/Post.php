@@ -10,6 +10,8 @@ class Post extends Model
     use HasFactory;
 
     // protected $table = 'post';
+
+    protected $fillable = ['title', 'body'];
     
     public static function published() {
         return self::where('published', 1)->get();
