@@ -24,11 +24,13 @@ Route::get('/', function () {
 
 Route::get('/posts', [PostsController::class, 'index']);
 Route::get('/posts/create', [PostsController::class, 'create']);
-Route::post('/posts', [PostsController::class, 'store']);
 Route::get('/posts/{id}', [PostsController::class, 'show'])->name('single-post');
+Route::post('/posts', [PostsController::class, 'store']);
 Route::post('/posts/{id}/comments', [CommentsController::class, 'store']);
 
 Route::get('/register', [RegisterController::class, 'create']);
 Route::post('/register', [RegisterController::class, 'store']);
 
+Route::get('/login', [LoginController::class, 'create']);
+Route::post('/login', [LoginController::class, 'store']);
 Route::get('/logout', [LoginController::class, 'destroy']);

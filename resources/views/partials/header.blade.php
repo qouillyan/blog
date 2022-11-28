@@ -13,6 +13,7 @@
                 <a class="btn btn-sm btn-outline-secondary" href="/logout">Logout</a>
             @else
                 <a class="btn btn-sm btn-outline-secondary" href="/register">Sign up</a>
+                <a class="btn btn-sm btn-outline-secondary" href="/login">Sign in</a>
             @endif
 
         </div>
