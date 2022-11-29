@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Http\Requests\StoreCommentRequest;
+use Mail;
+use App\Mail\CommentReceived;
 
 class CommentsController extends Controller
 {
@@ -17,7 +19,11 @@ class CommentsController extends Controller
     public function store(StoreCommentRequest $request, $id) {
         $validated = $request->validated();
 
-        Post::find($id)->addComment($validated['body']);
+        $post = Post::find($id);
+
+        $post->addComment($validated['body']);
+
+        Mail::to($post->user)->send(new CommentReceived($post));
 
         // Comment::create([
         //     'body' => request('body'),
