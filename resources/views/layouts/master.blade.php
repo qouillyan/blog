@@ -86,7 +86,12 @@
     <main role="main" class="container">
       <div class="row">
         <div class="col-md-8 blog-main">
-            
+            @if (session('message'))
+                <div class="alert alert-success">
+                  {{ session('message') }}
+                </div>
+            @endif
+
             @yield('content')
 
           <nav class="blog-pagination">
