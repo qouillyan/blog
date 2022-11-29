@@ -34,6 +34,11 @@
             @include('partials.error')
         @enderror
 
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">How old are you?</label>
+            <input name="age" type="number" class="form-control" id="exampleFormControlTextarea1" placeholder="Your age"/>
+        </div>
+
         <button type="submit">Sign Up</button>
     </form>
 @endsection

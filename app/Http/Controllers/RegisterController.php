@@ -9,6 +9,7 @@ class RegisterController extends Controller
 {
     public function __construct() {
         $this->middleware('guest');
+        $this->middleware('check.age')->only('store');
     }
 
     public function create() {
