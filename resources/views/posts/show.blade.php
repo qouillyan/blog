@@ -7,7 +7,7 @@
     <div class="blog-post">
         <h2 class="blog-post-title">{{ $post->title }}</h2>
         <p class="blog-post-meta">December 14, 2013 by
-            <a href="#">{{ $post->user->name }}</a>
+            <a href="/users/{{ $post->user_id }}">{{ $post->user->name }}</a>
         </p>
 
         <p>{{ $post->body }}</p>
