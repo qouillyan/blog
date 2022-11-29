@@ -10,6 +10,16 @@
             <a href="/users/{{ $post->user_id }}">{{ $post->user->name }}</a>
         </p>
 
+        @if(count($post->tags))
+            <ul>
+                @foreach($post->tags as $tag)
+                    <li>
+                        <a href="/tags/{{ $tag->name }}/posts">{{ $tag->name }}</a>
+                    </li>
+                @endforeach
+            </ul>
+        @endif
+
         <p>{{ $post->body }}</p>
     </div><!-- /.blog-post -->
 
