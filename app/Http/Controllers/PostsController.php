@@ -20,7 +20,8 @@ class PostsController extends Controller
     }
 
     public function index() {
-        $posts = Post::paginate(10);
+        // $posts = Post::paginate(10);
+        $posts = Post::with('user')->paginate(10); // objekat usera dobavljamo zajedno sa svakim postom
 
         return view('posts.index', compact('posts'));
     }
@@ -32,7 +33,6 @@ class PostsController extends Controller
         $post = Post::with('comments')->find($id);
         // SELECT * FROM posts
         // LEFT JOIN comments ON posts.id = comments.post_id where id = 1;
-
 
         return view('posts.show', compact('post'));
     }
