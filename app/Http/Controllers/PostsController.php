@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 
-// index - list users - GET /users 
+// index - list users - GET /users
 // show - single user - GET /users/:id
 // create - create user form - GET /users/create*
 // store - create user in db - POST /users
@@ -20,7 +20,7 @@ class PostsController extends Controller
     }
 
     public function index() {
-        $posts = Post::all();
+        $posts = Post::paginate(10);
 
         return view('posts.index', compact('posts'));
     }
@@ -30,7 +30,7 @@ class PostsController extends Controller
         // SELECT * FROM posts WHERE id = $id
 
         $post = Post::with('comments')->find($id);
-        // SELECT * FROM posts 
+        // SELECT * FROM posts
         // LEFT JOIN comments ON posts.id = comments.post_id where id = 1;
 
 
