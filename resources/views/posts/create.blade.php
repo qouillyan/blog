@@ -3,7 +3,7 @@
 @section('title', 'Create New Post')
 
 @section('content')
-    <form method="POST" action="/posts">
+    <form method="POST" action="/posts" class="my-5">
 
         @csrf
 
@@ -25,6 +25,31 @@
             @include('partials.error')
         @enderror
 
-        <button type="submit">Create post</button>
+        @if (count($tags))
+            <label class="form-label">Tags</label>
+            @foreach ($tags as $tag)
+                <div class="form-check">
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="tag{{ $tag->id }}"
+                        name="tags[]"
+                        value={{ $tag->id }}
+                    >
+                    <label
+                        class="form-check-label"
+                        for="tag{{ $tag->id }}"
+                    >
+                        {{ $tag->name }}
+                    </label>
+              </div>
+            @endforeach
+
+            @error('tags')
+                @include('partials.error')
+            @enderror
+        @endif
+
+        <button type="submit" class="btn btn-primary mt-3">Create post</button>
     </form>
 @endsection
